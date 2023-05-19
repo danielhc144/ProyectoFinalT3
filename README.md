@@ -7,7 +7,7 @@ Vagrant
 
 Pasos de instalación:
 
-1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
+#1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
 
 ```
 # -- mode: ruby -- 
@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
 End 
 ```
 
-2. Configuración inicial de máquinas virtuales.
+#2. Configuración inicial de máquinas virtuales.
 
 Realizando ssh a la máquina servidorbalancer, servidor1 y servidor2.
 
@@ -77,7 +77,7 @@ Desactivar firewalld ingresando:
 ```
 service firewalld stop
 ```
-3. Instalación de mod_proxy_balance. 
+#3. Instalación de mod_proxy_balance. 
 
 Ejecutar en servidorbalancer:
 ```
