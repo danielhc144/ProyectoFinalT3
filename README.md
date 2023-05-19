@@ -77,11 +77,6 @@ Desactivar firewalld ingresando:
 ```
 service firewalld stop
 ```
-
- 
-
- 
-
 3. Instalación de mod_proxy_balance. 
 
 Ejecutar en servidorbalancer:
@@ -91,16 +86,18 @@ sudo dnf install httpd httpd-tools mod_ssl
 
 Configurar el módulo para habilitar el módulo Proxy balancer:
 
+Ir a la dirección de httpd.conf
+
 ```
 sudo vim /etc/httpd/conf/httpd.conf 
 ```
-Agregar la siguiente línea:
+Agregar las siguientes líneas para cargar el balanceador en la configuración:
 
+```
 LoadModule proxy_balancer_module modules/mod_proxy_balancer.so 
-
 LoadModule proxy_module modules/mod_proxy.so 
-
 LoadModule proxy_http_module modules/mod_proxy_http.so 
+```
 
 Agregar la configuración del balanceador de carga en el archivo de configuración de Apache 
 
