@@ -1,11 +1,16 @@
 # ProyectoFinalT3
 Proyecto final de telecomunicaciones 3. 
 
-Pasos: 
+Requisitos:
+Virtual Box 6.1
+Vagrant
 
-Instalar máquinas virtuales con el vagrantFile. 
+Pasos de instalación:
 
-```# -- mode: ruby -- 
+1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
+
+```
+# -- mode: ruby -- 
 
 # vi: set ft=ruby : 
 
@@ -21,13 +26,13 @@ Vagrant.configure("2") do |config|
 
   end 
 
-  config.vm.define :servidorRest do |servidorRest| 
+  config.vm.define :servidorbalancer do |servidorbalancer| 
 
-    servidorRest.vm.box = "generic/centos8" 
+    servidorbalancer.vm.box = "generic/centos8" 
 
-    servidorRest.vm.network :private_network, ip: "192.168.60.3" 
+    servidorbalancer.vm.network :private_network, ip: "192.168.60.3" 
 
-    servidorRest.vm.hostname = "servidorRest" 
+    servidorbalancer.vm.hostname = "servidorbalancer" 
 
   end 
 
@@ -53,17 +58,25 @@ Vagrant.configure("2") do |config|
 
 End 
 ```
- 
+
+2. Configuración de máquinas virtuales.
+
+Realizando ssh a la máquina servidorbalancer, servidor1 y servidor2.
 
 Desactivar selinux y firewalld. 
 
-Ir a vim /etc/selinux/config y cambiar por SELINUX=disabled 
+Para cada máquina virtual: ir a /etc/selinux/config y cambiar SELINUX.
+```
+SELINUX=disabled 
+```
 
 Reiniciar máquina virtual. 
 
 Desactivar firewalld ingresando:
 
-```service firewalld stop```
+```
+service firewalld stop
+```
 
  
 
