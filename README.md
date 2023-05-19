@@ -7,7 +7,9 @@ Vagrant
 
 Pasos de instalación:
 
-## 1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
+# Instalación manual.
+
+# 1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
 
 ```
 # -- mode: ruby -- 
