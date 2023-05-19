@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
 End 
 ```
 
-#2. Configuración inicial de máquinas virtuales.
+# 2. Configuración inicial de máquinas virtuales.
 
 Realizando ssh a la máquina servidorbalancer, servidor1 y servidor2.
 
@@ -77,7 +77,7 @@ Desactivar firewalld ingresando:
 ```
 service firewalld stop
 ```
-#3. Instalación de mod_proxy_balance. 
+# 3. Instalación de mod_proxy_balancer. 
 
 Ejecutar en servidorbalancer:
 ```
@@ -92,34 +92,31 @@ Ir a la dirección de httpd.conf
 sudo vim /etc/httpd/conf/httpd.conf 
 ```
 Agregar las siguientes líneas para cargar el balanceador en la configuración:
+Copiar luego de "Include conf.modules.d/*.conf"
 
 ```
 LoadModule proxy_balancer_module modules/mod_proxy_balancer.so 
 LoadModule proxy_module modules/mod_proxy.so 
 LoadModule proxy_http_module modules/mod_proxy_http.so 
 ```
+Agregar la configuración del balanceador de carga en el archivo de configuración de Apache:
 
-Agregar la configuración del balanceador de carga en el archivo de configuración de Apache 
+Ir a la ubicación: sudo vim /etc/httpd/conf.d/proxy-balancer.conf 
 
+```
 sudo vim /etc/httpd/conf.d/proxy-balancer.conf 
-
+```
 Agregar el siguiente contenido: 
 
+```
 <Proxy balancer://mycluster> 
-
         BalancerMember http://10.0.0.1:80 
-
         BalancerMember http://10.0.0.2:80 
-
 </Proxy> 
 
- 
-
 ProxyPass /test balancer://mycluster 
-
 ProxyPassReverse /test balancer://mycluster 
-
- 
+```
 
 En la siguiente ruta sudo vim /etc/httpd/conf/httpd.conf colocar lo siguiente: 
 
@@ -141,44 +138,26 @@ En la siguiente ruta sudo vim /etc/httpd/conf/httpd.conf colocar lo siguiente:
 
  
 
-# Configura tu virtual host para utilizar el cluster 
-
+Configurar el virtual host para utilizar el cluster: 
+```
 <VirtualHost *:80> 
-
     ServerName myserver.com 
-
     ProxyPreserveHost On 
-
- 
-
     ProxyPass / balancer://mycluster/ 
-
     ProxyPassReverse / balancer://mycluster/ 
-
- 
-
 #<Directory /var/www> 
-
 #Options -Indexes 
-
 #Order allow,deny 
-
 #Allow from all 
-
 #</Directory> 
-
 </VirtualHost> 
+```
 
- 
-
-Reiniciar Apache 
-
+Reiniciar Apache: 
+```
 sudo systemctl restart httpd 
-
+```
  
-
- 
-
 Para todas las maquinas: 
 
 sudo dnf install httpd 
