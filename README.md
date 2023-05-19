@@ -5,9 +5,19 @@ Requisitos:
 Virtual Box 6.1
 Vagrant
 
+Contenido:
+A. Instalación Manual.
+  1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
+  2. Configuración inicial de máquinas virtuales.
+  3. Instalación de httpd.
+  4. Instalación de mod_proxy_balancer. 
+  5. Instalación de Artillery.
+B. Instalación mediante aprovisionamiento.
+  
+
 Pasos de instalación:
 
-# Instalación manual.
+# A. Instalación manual.
 
 # 1. Instalar 3 máquinas virtuales con el siguiente vagrantFile.
 
@@ -153,8 +163,6 @@ Reiniciar Apache:
 ```
 sudo systemctl restart httpd 
 ```
-
-
 # 5. Instalación de Artillery.
 
 Realizar el siguiente procedimiento en servidorbalancer o en otra máquina externa.
@@ -177,8 +185,6 @@ sudo yum install npm
 npm install -g npm@latest 
 npm -v 
 ```
- 
-
 Instalacion de Artillery 2.0.0-dev9: 
 
 Ejecutar las siguientes líneas.
@@ -216,6 +222,10 @@ Ejecutar archivo para prueba con artillery:
 ```
 artillery run test.yml 
 ```
+
+# Instalación mediante aprovisionamiento.
+
+1. Des
 
 Para más referencia:
  
