@@ -120,7 +120,8 @@ LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
 LoadModule proxy_module modules/mod_proxy.so 
 LoadModule proxy_http_module modules/mod_proxy_http.so 
 ```
-
+Agregar el cluster en la configuración de httpd.
+```
 <Proxy balancer://mycluster> 
 
     BalancerMember http://192.168.60.4:80 
@@ -130,7 +131,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
     #ProxySet lbmethod=byrequests
     ProxySet lbmethod=bytraffic
 </Proxy> 
-
+```
 Configurar el virtual host para utilizar el cluster añadiendo la siguiente configuración a httpd.conf: 
 ```
 <VirtualHost *:80> 
