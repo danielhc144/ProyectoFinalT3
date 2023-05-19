@@ -151,25 +151,6 @@ Reiniciar Apache:
 ```
 sudo systemctl restart httpd 
 ```
-Agregar la configuración del balanceador de carga en el archivo de configuración de Apache:
-
-
-Ir a la ubicación: sudo vim /etc/httpd/conf.d/proxy-balancer.conf 
-
-```
-sudo vim /etc/httpd/conf.d/proxy-balancer.conf 
-```
-Agregar el siguiente contenido: 
-
-```
-<Proxy balancer://mycluster>
-    BalancerMember http://192.168.60.2:80
-    BalancerMember http://192.168.60.4:80
-</Proxy>
-
-ProxyPass /test balancer://mycluster
-ProxyPassReverse /test balancer://mycluster
-```
 
 
 # 5. Instalación de Artillery.
