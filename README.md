@@ -61,7 +61,9 @@ Ir a vim /etc/selinux/config y cambiar por SELINUX=disabled
 
 Reiniciar máquina virtual. 
 
-Desactivar firewalld ingresando service firewalld stop 
+Desactivar firewalld ingresando:
+
+```service firewalld stop```
 
  
 
