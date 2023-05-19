@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
 End 
 ```
 
-2. Configuración de máquinas virtuales.
+2. Configuración inicial de máquinas virtuales.
 
 Realizando ssh a la máquina servidorbalancer, servidor1 y servidor2.
 
@@ -82,15 +82,19 @@ service firewalld stop
 
  
 
-Instalar mod_proxy_balance. 
+3. Instalación de mod_proxy_balance. 
 
+Ejecutar en servidorbalancer:
+```
 sudo dnf install httpd httpd-tools mod_ssl 
+```
 
-Configurar el módulo para habilitar el módulo Proxy balancer 
+Configurar el módulo para habilitar el módulo Proxy balancer:
 
+```
 sudo vim /etc/httpd/conf/httpd.conf 
-
-Agregar la siguiente línea 
+```
+Agregar la siguiente línea:
 
 LoadModule proxy_balancer_module modules/mod_proxy_balancer.so 
 
