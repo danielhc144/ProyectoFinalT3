@@ -223,9 +223,7 @@ Ejecutar archivo para prueba con artillery:
 artillery run test.yml 
 ```
 
-# Instalación mediante aprovisionamiento.
 
-1. Des
 
 Para más referencia:
  
